@@ -18,8 +18,17 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_fg2, col_bg2,  col_border  },
 };                                                 
                                                    
+static const char *const autostart[] = {
+	"picom", "-b", NULL,
+    "sh", "-c", "feh --randomize --bg-fill ~/Media/Pictures/Wallpapers/*", NULL,
+    "slstatus", NULL,
+    "/usr/lib/polkit-kde-authentication-agent-1", NULL,
+	NULL /* terminate */
+};
+
+
 /* tagging */                                      
-static const char *tags[] = { "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
