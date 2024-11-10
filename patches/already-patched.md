@@ -5,3 +5,4 @@
 - [x] Combo 
 - [x] AlwaysCenter 
 - [x] CursorWarp 
+- [x] FakeFullscreen
