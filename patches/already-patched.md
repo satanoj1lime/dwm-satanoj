@@ -8,3 +8,4 @@
 - [x] FakeFullscreen
 - [x] Fullscreen
 - [x] MoveStack 
+- [x] ViewOnTag

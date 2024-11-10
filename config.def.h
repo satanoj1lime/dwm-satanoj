@@ -5,6 +5,7 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 23;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
+static const Bool viewontag         = True;     /* Switch view on tag switch */
 static const char *fonts[]          = { "Hack Nerd Font Mono:size=10" };
 static const char dmenufont[]       = "Hack Nerd Font Mono:size=10";
 static const char col_bg1[]         = "#191724";
