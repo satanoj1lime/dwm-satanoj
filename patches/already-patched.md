@@ -7,3 +7,4 @@
 - [x] CursorWarp 
 - [x] FakeFullscreen
 - [x] Fullscreen
+- [x] MoveStack 
