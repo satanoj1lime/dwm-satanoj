@@ -6,3 +6,4 @@
 - [x] AlwaysCenter 
 - [x] CursorWarp 
 - [x] FakeFullscreen
+- [x] Fullscreen
