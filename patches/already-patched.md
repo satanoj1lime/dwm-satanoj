@@ -10,3 +10,4 @@
 - [x] MoveStack 
 - [x] ViewOnTag
 - [ ] ResizeHere 
+- [x] TiledMove 
