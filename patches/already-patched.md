@@ -9,4 +9,3 @@
 - [x] Fullscreen
 - [x] MoveStack 
 - [x] ViewOnTag
-- [x] ResizeHere 
