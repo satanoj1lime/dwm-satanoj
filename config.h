@@ -2,24 +2,24 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int snap      = 23;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Hack Nerd Font Mono:size=10" };
 static const char dmenufont[]       = "Hack Nerd Font Mono:size=10";
-static const char col_gray1[]       = "#3b3d40";
-static const char col_gray2[]       = "#3b3d40";
-static const char col_gray3[]       = "#7c7d8d";
-static const char col_gray4[]       = "#8e8e9c";
-static const char col_cyan[]        = "#4c565c";
+static const char col_bg1[]         = "#191724";
+static const char col_bg2[]         = "#1f1d2e";
+static const char col_fg1[]         = "#e0def4";
+static const char col_fg2[]         = "#e0def4";
+static const char col_border[]      = "#191724";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
-};
-
-/* tagging */
-static const char *tags[] = { "", "", "", "", "" };
+	[SchemeNorm] = { col_fg1, col_bg1,  col_border  },
+	[SchemeSel]  = { col_fg2, col_bg2,  col_border  },
+};                                                 
+                                                   
+/* tagging */                                      
+static const char *tags[] = { "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
