@@ -4,3 +4,4 @@
 - [x] AttachAsideAndBelow 
 - [x] Combo 
 - [x] AlwaysCenter 
+- [x] CursorWarp 
