@@ -11,3 +11,4 @@
 - [x] ViewOnTag
 - [ ] ResizeHere 
 - [x] TiledMove 
+- [x] Swallow  
