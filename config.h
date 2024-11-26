@@ -27,7 +27,7 @@ static const char *colors[][3]      = {
                                                    
 static const char *const autostart[] = {
 	"picom", "-b", NULL,
-    "sh", "-c", "feh --randomize --bg-max ~/Media/Pictures/Wallpapers/*", NULL,
+    "sh", "-c", "feh --randomize --bg-max ~/personal/personal/Media/Pictures/bg/*", NULL,
     "slstatus", NULL,
     "/usr/lib/polkit-kde-authentication-agent-1", NULL,
 	NULL /* terminate */
@@ -46,9 +46,11 @@ static const Rule rules[] = {
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
     { "Nemo",           NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Gimp",           NULL,     NULL,           0,         1,          0,           0,        -1 },
+    { "pavucontrol",    NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Firefox",        NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 	{ "St",             NULL,     NULL,           0,         0,          1,           0,        -1 },
     { "Alacritty",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+    { "arandr",         NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ NULL,             NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -80,7 +82,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *launchercmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "alacritty", NULL };
-static const char *browsercmd[]  = { "google-chrome-stable", NULL };
+static const char *browsercmd[]  = { "thorium-browser", NULL };
 
 #include "movestack.c"
 
@@ -89,8 +91,8 @@ static const Key keys[] = {
     { MODKEY,                       XK_r,      spawn,          {.v = launchercmd } },
     { MODKEY,           	        XK_x, 	   spawn,          {.v = termcmd } },
     { MODKEY,           	        XK_b, 	   spawn,          {.v = browsercmd } },
-	{ MODKEY,                       XK_p,      spawn,          SHCMD ("flameshot full -p ~/Media/Pictures/Screenshots/")},
-    { MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD ("flameshot gui -p ~/Media/Pictures/Screenshots/")},
+	{ MODKEY,                       XK_p,      spawn,          SHCMD ("flameshot full -p ~/personal/personal/Media/Pictures/screenshots/")},
+    { MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD ("flameshot gui -p ~/personal/personal/Media/Pictures/screenshots/")},
     { MODKEY|ControlMask,           XK_p,      spawn,          SHCMD ("flameshot gui --clipboard")},
     { MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
