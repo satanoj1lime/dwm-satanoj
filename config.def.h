@@ -1,24 +1,24 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 23;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 1;    /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;        /* 0 means no systray */
-static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
+static const int swallowfloating    = 1;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const Bool viewontag         = True;     /* Switch view on tag switch */
-static const char *fonts[]          = { "Hack Nerd Font Mono:size=10" };
-static const char dmenufont[]       = "Hack Nerd Font Mono:size=10";
+static const char *fonts[]          = { "JetBrains Mono:size=10" };
+static const char dmenufont[]       = { "JetBrains Mono:size=10" };
 static const char col_bg1[]         = "#191724";
 static const char col_bg2[]         = "#1f1d2e";
 static const char col_fg1[]         = "#e0def4";
 static const char col_fg2[]         = "#e0def4";
-static const char col_border[]      = "#191724";
+static const char col_border[]      = "#FFFFFF";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_fg1, col_bg1,  col_border  },
@@ -27,15 +27,14 @@ static const char *colors[][3]      = {
                                                    
 static const char *const autostart[] = {
 	"picom", "-b", NULL,
-    "sh", "-c", "feh --randomize --bg-max ~/personal/personal/Media/Pictures/bg/*", NULL,
-    "slstatus", NULL,
-    "/usr/lib/polkit-kde-authentication-agent-1", NULL,
+	"sh", "-c", "feh --randomize --bg-max ~/Pictures/Wallpapers/*", NULL, "slstatus", NULL,
+	"/usr/lib/polkit-kde-authentication-agent-1", NULL,
 	NULL /* terminate */
 };
 
 
 /* tagging */                                      
-static const char *tags[] = { "", "", "", "", "", "" };
+static const char *tags[] = { "", "2", "3", "4", "5", "6" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -44,13 +43,13 @@ static const Rule rules[] = {
 	 */
     
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-    { "Nemo",           NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "dolphin",           NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Gimp",           NULL,     NULL,           0,         1,          0,           0,        -1 },
-    { "pavucontrol",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox",        NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
+	{ "pavucontrol",    NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "zen-browser",        NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 	{ "St",             NULL,     NULL,           0,         0,          1,           0,        -1 },
-    { "Alacritty",      NULL,     NULL,           0,         0,          1,           0,        -1 },
-    { "arandr",         NULL,     NULL,           0,         1,          0,           0,        -1 },
+	{ "ghostty",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "arandr",         NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ NULL,             NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 
@@ -81,20 +80,20 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *launchercmd[] = { "rofi", "-show", "drun", NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
-static const char *browsercmd[]  = { "thorium-browser", NULL };
+static const char *termcmd[]  = { "ghostty", NULL };
+static const char *browsercmd[]  = { "zen-browser", NULL };
 
 #include "movestack.c"
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-    { MODKEY,                       XK_r,      spawn,          {.v = launchercmd } },
-    { MODKEY,           	        XK_x, 	   spawn,          {.v = termcmd } },
-    { MODKEY,           	        XK_b, 	   spawn,          {.v = browsercmd } },
+	{ MODKEY,                       XK_r,      spawn,          {.v = launchercmd } },
+	{ MODKEY,           	        XK_Return, 	   spawn,          {.v = termcmd } },
+	{ MODKEY,           	        XK_b, 	   spawn,          {.v = browsercmd } },
 	{ MODKEY,                       XK_p,      spawn,          SHCMD ("flameshot full -p ~/personal/personal/Media/Pictures/screenshots/")},
-    { MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD ("flameshot gui -p ~/personal/personal/Media/Pictures/screenshots/")},
-    { MODKEY|ControlMask,           XK_p,      spawn,          SHCMD ("flameshot gui --clipboard")},
-    { MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD ("flameshot gui -p ~/personal/personal/Media/Pictures/screenshots/")},
+	{ MODKEY|ControlMask,           XK_p,      spawn,          SHCMD ("flameshot gui --clipboard")},
+	{ MODKEY|ControlMask,           XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
@@ -103,9 +102,9 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY,                       XK_z, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-    { MODKEY|ControlMask,            XK_k,      killclient,     {0} },
+	{ MODKEY|ControlMask,            XK_k,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -118,7 +117,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY|ControlMask,           XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,           XK_q,      quit,           {0} },
 
 /* TAGKEYS */	
 	TAGKEYS(                        XK_1,                      0)
